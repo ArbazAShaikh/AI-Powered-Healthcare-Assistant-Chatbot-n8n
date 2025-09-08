@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthCare Plus - Your Digital Health Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>HealthCare Plus</span>
+                </div>
+                <nav class="nav">
+                    <a href="#services" class="nav-link">Services</a>
+                    <a href="#chat" class="nav-link">Health Chat</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <button class="cta-btn" onclick="scrollToChat()">
+                        <i class="fas fa-comments"></i>
+                        Start Chat
+                    </button>
+                </nav>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Your Digital Health Companion</h1>
+                <p class="hero-subtitle">Get instant health advice, book appointments, and manage your wellness journey with our AI-powered health assistant.</p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary" onclick="scrollToChat()">
+                        <i class="fas fa-robot"></i>
+                        Chat with AI Doctor
+                    </button>
+                    <button class="btn btn-outline" onclick="scrollToServices()">
+                        <i class="fas fa-stethoscope"></i>
+                        Explore Services
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Health Services</h2>
+                <p class="section-subtitle">Comprehensive healthcare services at your fingertips</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" onclick="openServiceModal('consultation')">
+                    <div class="service-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3 class="service-title">AI Health Consultation</h3>
+                    <p class="service-desc">Get instant medical advice from our AI-powered health assistant</p>
+                    <div class="service-features">
+                        <span class="feature-tag">24/7 Available</span>
+                        <span class="feature-tag">Instant Response</span>
+                    </div>
+                </div>
+
+                <div class="service-card" onclick="openServiceModal('appointment')">
+                    <div class="service-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3 class="service-title">Appointment Booking</h3>
+                    <p class="service-desc">Book appointments with healthcare professionals</p>
+                    <div class="service-features">
+                        <span class="feature-tag">Easy Scheduling</span>
+                        <span class="feature-tag">Reminders</span>
+                    </div>
+                </div>
+
+                <div class="service-card" onclick="openServiceModal('checkup')">
+                    <div class="service-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3 class="service-title">Health Checkup</h3>
+                    <p class="service-desc">Comprehensive health assessment and monitoring</p>
+                    <div class="service-features">
+                        <span class="feature-tag">Full Body Scan</span>
+                        <span class="feature-tag">Reports</span>
+                    </div>
+                </div>
+
+                <div class="service-card" onclick="openServiceModal('pharmacy')">
+                    <div class="service-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <h3 class="service-title">Online Pharmacy</h3>
+                    <p class="service-desc">Order medicines and healthcare products online</p>
+                    <div class="service-features">
+                        <span class="feature-tag">Home Delivery</span>
+                        <span class="feature-tag">Prescription Upload</span>
+                    </div>
+                </div>
+
+                <div class="service-card" onclick="openServiceModal('records')">
+                    <div class="service-icon">
+                        <i class="fas fa-file-medical"></i>
+                    </div>
+                    <h3 class="service-title">Health Records</h3>
+                    <p class="service-desc">Maintain and access your digital health records</p>
+                    <div class="service-features">
+                        <span class="feature-tag">Secure Storage</span>
+                        <span class="feature-tag">Easy Access</span>
+                    </div>
+                </div>
+
+                <div class="service-card" onclick="openServiceModal('wellness')">
+                    <div class="service-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3 class="service-title">Wellness Programs</h3>
+                    <p class="service-desc">Personalized wellness and fitness programs</p>
+                    <div class="service-features">
+                        <span class="feature-tag">Custom Plans</span>
+                        <span class="feature-tag">Progress Tracking</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Section -->
+    <section id="chat" class="chat-section">
+        <div class="container">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <div class="chat-title">
+                        <i class="fas fa-robot"></i>
+                        <h3>AI Health Assistant</h3>
+                        <span class="status-indicator online"></span>
+                    </div>
+                    <div class="chat-actions">
+                        <button class="chat-action-btn" onclick="clearChat()" title="Clear Chat">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        <button class="chat-action-btn" onclick="toggleChatSettings()" title="Settings">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot-message">
+                        <div class="message-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-text">
+                                Hello! I'm your AI Health Assistant. How can I help you today?
+                            </div>
+                            <div class="message-time">Just now</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <div class="chat-input-wrapper">
+                        <textarea 
+                            id="chatInput" 
+                            class="chat-input" 
+                            placeholder="Type your health question here..."
+                            rows="1"
+                            onkeypress="handleInputKeypress(event)"
+                        ></textarea>
+                        <button class="send-btn" onclick="sendMessage()" id="sendBtn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="input-suggestions">
+                        <button class="suggestion-btn" onclick="insertSuggestion('What are the symptoms of fever?')">
+                            Fever symptoms
+                        </button>
+                        <button class="suggestion-btn" onclick="insertSuggestion('How to maintain a healthy diet?')">
+                            Healthy diet tips
+                        </button>
+                        <button class="suggestion-btn" onclick="insertSuggestion('What should I do for headaches?')">
+                            Headache remedies
+                        </button>
+                    </div>
+                </div>
+
+                <div class="chat-status" id="chatStatus">
+                    <div class="typing-indicator" style="display: none;">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        AI is typing...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Modals -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+        <div class="modal" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3 id="modalTitle">Service Details</h3>
+                <button class="modal-close" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About HealthCare Plus</h2>
+                    <p>We're revolutionizing healthcare with AI-powered solutions that make quality healthcare accessible to everyone. Our platform combines cutting-edge technology with compassionate care to provide you with the best health experience.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="stat-number">10K+</span>
+                            <span class="stat-label">Happy Patients</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">AI Support</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">99%</span>
+                            <span class="stat-label">Accuracy Rate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-heartbeat"></i>
+                        <span>HealthCare Plus</span>
+                    </div>
+                    <p>Your trusted digital health companion, providing AI-powered healthcare solutions 24/7.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#chat">AI Chat</a></li>
+                        <li><a href="#about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Emergency</h4>
+                    <p class="emergency-text">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        For medical emergencies, call 911 immediately
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 HealthCare Plus. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <i class="fas fa-heartbeat"></i>
+            <p>Consulting AI Doctor...</p>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
